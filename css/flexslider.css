@@ -40,13 +40,13 @@ html[xmlns] .slides {display: block;}
 /* FlexSlider Default Theme
 *********************************/
 .flexslider {background:none; position: relative; 
-zoom: 1;}
-.flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
-.loading .flex-viewport {max-height: 300px;}
-.flexslider .slides {zoom: 1;}
-
-.carousel li {margin-right: 5px}
-
+  zoom: 1;}
+  .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+  .loading .flex-viewport {max-height: 300px;}
+  .flexslider .slides {zoom: 1;}
+  
+    .carousel li {margin-right: 5px}
+  
 /* Caption style */
 
 .flex-caption { background: rgba(0,0,0,.8); margin-left:5px;bottom:5px; position:absolute;padding:20px; z-index:99;}

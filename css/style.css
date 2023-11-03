@@ -260,7 +260,7 @@ header ul.nav li ul li ul {
   content:none;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-color: #37A691;  
+color: rgba(111, 162, 221, 0.67); 
 /* background: #52C2AD; */
 /* border: 1px solid #3AA994 !important; */
 }
@@ -300,7 +300,7 @@ display: inline-block;
 }
 #featured .flexslider:after {
 content:'';
-background: rgba(17, 218, 180, 0.67);
+background: rgba(111, 162, 221, 0.67);
 position:absolute;
 top:0px;
 z-index:6;
@@ -586,7 +586,7 @@ padding: 6px 20px;
 font-size: 1em;
 cursor: pointer;
 border: 1px solid #E6E6E6;
-background: #37907F;
+background: rgba(111, 162, 221, 0.67);;
 color: #FFF;
 font-weight: 500;
 text-decoration: none;
@@ -853,7 +853,7 @@ line-height: 18px;
 width: 18px;
 height: 18px;
 margin-right: 5px;
-color: #046E5A;
+color: rgba(111, 162, 221, 0.67);
 text-align: center;
 /* border-radius: 50%; */
 margin-left: 6px;
@@ -952,7 +952,7 @@ blockquote cite a:visited 				{ color:#555; }
 
 /* --- button --- */
 .btn{text-align: center;
-background: #14987F;
+background: rgba(111, 162, 221, 0.67);;
 color: #fff;
 border-radius: 0;border: 0;}
 .btn-theme {
@@ -981,7 +981,7 @@ ul.link-list li{
 	list-style:none;
 }
 footer{
-background: #046E5A;
+background: rgba(111, 162, 221, 0.67);;
 }
 footer ul.link-list li a{
 	color:#fff;
@@ -1216,7 +1216,7 @@ border: 1px solid #e6e6e6;
 
 .pricing-box-item .pricing-terms {
 	text-align: center;
-	background: #0E987E;
+	background: rgba(111, 162, 221, 0.67);;
 	display: block;
 	overflow: hidden;
 	padding: 11px 0 5px; 
@@ -1335,7 +1335,7 @@ ul.social-network li {
 	padding:0;
 	padding-top:30px;
 	margin:20px 0 0 0;
-	background: #002821;
+	background: rgba(58, 144, 241, 0.67);;
 }
 
 #sub-footer p{
@@ -1445,7 +1445,7 @@ article img.pull-right, article .align-right{
 	float:right;
 	margin:5px 0 15px 15px;
 }
- ============================= */
+/* ============================= */
 
 .clear-marginbot{
 	margin-bottom:0;
