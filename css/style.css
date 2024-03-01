@@ -80,7 +80,7 @@ header .navbar {
     font-weight: 700;
     line-height: 1em;
 	letter-spacing: -10px;
-    margin-top: -5px;
+    margin-top: -10px;
     padding: 0 0 0 0px;
 }
 .navbar-default .navbar-brand{
@@ -260,7 +260,7 @@ header ul.nav li ul li ul {
   content:none;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-color: rgba(111, 162, 221, 0.67); 
+color: rgba(71, 134, 211, 0.67); 
 /* background: #52C2AD; */
 /* border: 1px solid #3AA994 !important; */
 }
@@ -300,7 +300,7 @@ display: inline-block;
 }
 #featured .flexslider:after {
 content:'';
-background: rgba(111, 162, 221, 0.67);
+background: rgba(155, 194, 238, 0.67);
 position:absolute;
 top:0px;
 z-index:6;
@@ -504,7 +504,7 @@ section.callaction {
 ==================================== */
 
 #inner-headline{
-	background: #0E987E;
+	background:  rgba(155, 194, 238, 0.67);
 	position:relative;
 	margin:0;
 	padding:0;
