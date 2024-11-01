@@ -78,19 +78,19 @@ header .navbar {
     text-transform: uppercase;
     font-size: 2vw;
     font-weight: 700;
-    line-height: 1;  /* Cambiado a 1 para reducir el espacio vertical */
+    line-height: 1;
     letter-spacing: 0px;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    height: 40px; /* Añade una altura fija para desktop */
+    height: 40px; /* Altura para PC */
 }
 
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 4vw;
-        height: auto; /* Permite que la altura sea automática en móvil */
+        height: 30px; /* Altura reducida para móvil */
     }
 }
 
