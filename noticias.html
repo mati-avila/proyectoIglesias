@@ -5,7 +5,6 @@
 <title>Iglesias Unidad de Jujuy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
-<meta name="author" content="http://webthemez.com" />
  
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
@@ -13,10 +12,10 @@
 <link href="css/flexslider.css" rel="stylesheet" />
 <link href="css/style.css" rel="stylesheet" />
  
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-RbYeXZTMpz+SuT8HeHE54BkZ6Q+tW1zX3Jq8c5s8U0djqIevg+M6zP8i8+lYyAX" crossorigin=""/>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-mntK2nK4dFJ1cJFS5yE2F1xG9G42lhMPPB0I0Kmvh0R2HQAxG8IFsT8gOlHfWkM8" crossorigin=""></script>
 
 </head>
 <body>
@@ -56,135 +55,55 @@
 	</div>
 	</section>
 	<section id="content">
-		<div class="container content">	
-<div class="row"> 
-							<div class="col-md-12">
-								<div class="about-logo">
-									<h3>Noticias Recientes</h3>
-									<p>¡Te damos la bienvenida a la sección de noticias recientes, donde mantenemos viva la llama de la fe con las últimas novedades y eventos de nuestras iglesias locales! Nos complace compartir contigo las bendiciones, testimonios y actividades que ocurren en nuestras comunidades cristianas.</p>
-                                    	<p>Explora las últimas noticias y eventos que fortalecen nuestra conexión espiritual. ¡Gracias por ser parte de nuestra familia</p>
-								</div>
-								<a href="#" class="btn btn-color">Mas noticias</a>  
-							</div>
-						</div>		
-        <!-- Service Blcoks -->
-        <div class="row service-v1 margin-bottom-40">
-            <div class="col-md-4 md-margin-bottom-40">
-               <img class="img-responsive" src="img/img misa 2.jpeg" alt="">   
-                <h2>¡Feliz XIX Aniversario Iglesias Unidas del ramal San Pedro!</h2>
-                <p>El sábado 27 de abril en el local evangélico de B° 
-                    Albornoz, situado en la ciudad de San Pedro de Jujuy,
-                    se celebró el XIX aniversario de reuniones unidas en la 
-                    Región Ramal San Pedro. La celebración tuvo la 
-                    participación de las seis (6) iglesias pertenecientes a la 
-                    región, como así también, visitas de iglesias de otros 
-                    puntos de la provincia</p>        
-            </div>
-            <div class="col-md-4">
-                <img class="img-responsive" src="img/Img Misa.jpeg" alt="">            
-                <h2>Reuniones Unidas de Mujeres</h2>
-                <p>Pero el aniversario también se celebraba en reconocimiento de 
-las reuniones unidas de mujeres de la región, ya que las 
-hermanas de San Pedro de Jujuy también se reúnen para tener 
-juntas un tiempo de comunión unida para crecer en el 
-conocimiento y enseñanza de la palabra de Dios. </p>        
-            </div>
-           <div class="col-md-4 md-margin-bottom-40">
-              <img class="img-responsive" src="img/IMG_1455.jpg" alt="">  
-                <h2>Con un mismo sentir</h2>
-                <p>El trabajo aún continúa, lo que fue este mes de abril una celebración, el próximo mes de mayo será una 
-                    reunión unida más para seguir creciendo en la unidad, comunión e identidad de las Asambleas de los Hnos.
-                    de las Iglesias Unidas del Ramal San Pedro. </p>        
-            </div>
-        </div>
-        <!-- End Service Blcoks -->
-
-        <hr class="margin-bottom-50">
-
-        <!-- Info Blcoks 
-        <div class="row">
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-bell-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Awesome Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+        <div class="container content">    
+            <div class="row"> 
+                <div class="col-md-12">
+                    <div class="about-logo">
+                        <h3>Noticias Recientes</h3>
+                        <p>¡Te damos la bienvenida a la sección de noticias recientes, donde mantenemos viva la llama de la fe con las últimas novedades y eventos de nuestras iglesias locales! Nos complace compartir contigo las bendiciones, testimonios y actividades que ocurren en nuestras comunidades cristianas.</p>
+                        <p>Explora las últimas noticias y eventos que fortalecen nuestra conexión espiritual. ¡Gracias por ser parte de nuestra familia!</p>
+                    </div>
+                    <a href="#" class="btn btn-color">Más noticias</a>  
+                    
+                    <!-- Aquí agregamos el título para identificar el mes -->
+                    <h3 class="news-month">Noticias de Octubre</h3>
                 </div>
             </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-hdd-o"></i>
-                <div class="info-blocks-in">
-                    <h3>FontAwesome</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+            
+            <!-- Bloques de noticias -->
+            <div class="row service-v1 margin-bottom-40">
+                <div class="col-md-4 md-margin-bottom-40">
+                   <img class="img-responsive" src="img/Img_caimancito_octubre.jpg" alt="">   
+                    <h3>Encuentro Evangelístico en Caimancito Une a Iglesias de la Región Yungas</h3>
+                    <p>El pasado fin de semana, iglesias de la región Yungas realizaron una campaña evangelística en Caimancito, Ledesma. La actividad incluyó reuniones en distintos barrios y contó con la participación de líderes y miembros de iglesias de Perico, San Miguel del Monte, y Palpalá. La organización "Iglesias Unidas de la Provincia de Jujuy" destacó el esfuerzo conjunto para difundir el mensaje cristiano y agradeció el apoyo recibido.</p>        
                 </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-lightbulb-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Bootstrap</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+                <div class="col-md-4">
+                    <img class="img-responsive" src="img/Img_palpala-Octubre.jpg" alt="">            
+                    <h3>Reuniones Unidas en Palpalá Fortalecen la Unidad de Iglesias de la Región</h3>
+                    <p>Durante el fin de semana del 11 al 13 de octubre, las iglesias de la región Capital y Palpalá celebraron reuniones unidas en Palpalá. El evento incluyó diversas actividades, como la presentación del coro “Alas” el viernes en la Casa de la Cultura, donde se compartió el mensaje del evangelio. El sábado se reunieron para agradecer otro año de trabajo en la obra local, y el domingo, el hermano Abel Moreno de Apolinario Saravia, Salta, compartió un mensaje especial. Las Iglesias Unidas de la Provincia de Jujuy celebraron la comunión vivida y la dedicación a la unidad cristiana. </p>        
+                </div>
+                <div class="col-md-4 md-margin-bottom-40">
+                    <img class="img-responsive" src="img/Img_zenta_octubre.jpg" alt="">  
+                    <h2>Hasta aqui nos ayudo Jehova</h2>
+                    <p>El pasado 5 de octubre, las iglesias unidas de la quebrada de Jujuy realizaron una campaña evangelística en el pueblo de Puerta de Zenta, departamento de Humahuaca. Con una vista a los cerros y el apoyo de comunidades vecinas, los asistentes compartieron el mensaje del evangelio en Palca de Aparzo. Pese al esfuerzo de madrugar para el viaje, el encuentro resultó en decisiones por Cristo y una cálida recepción de las personas de la región.
+
+                        Además, la comisión de iglesias locales anunció que la región sumará una iglesia en Tres Cruces, expandiendo su labor. En 2024, se espera realizar campañas con la participación de las 8 iglesias de la quebrada. Las Iglesias Unidas de la Provincia de Jujuy celebraron la unidad y el compromiso de todos los participantes. </p>        
                 </div>
             </div>
         </div>
-        End Info Blcoks -->
-
-       
-        <!-- Info Blcoks
-        <div class="row">
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-code"></i>
-                <div class="info-blocks-in">
-                    <h3>SEO Ready</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-compress"></i>
-                <div class="info-blocks-in">
-                    <h3>Fully Responsive</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-html5"></i>
-                <div class="info-blocks-in">
-                    <h3>CSS3 + HTML5</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-        </div>
-         End Info Blcoks -->
-
-        
-    </div>
-    </section>
+    </section>    
 	<footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="widget">
-					<h5 class="widgetheading">Nuestro Contacto</h5>
-					<address>
-					<strong>Direcion</strong><br>
-					Calle Numero Tanto<br>
-					Codigo Postal: .</address>
-					<p>
-						<i class="icon-phone"></i> Celular <br>
-						<i class="icon-envelope-alt"></i> email
-					</p>
-				</div>
+                    <h5 class="widgetheading">Nuestro Contacto</h5>
+                    <address>
+                    <strong>Email</strong><br>
+                    contacto@iglesiasunidadejujuy.com<br>
+                </div>
 			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Quick Links</h5>
-					<ul class="link-list">
-						<li><a href="#">Latest Events</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 	<div id="sub-footer">
