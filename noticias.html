@@ -2,20 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Iglesias Unidad de Jujuy</title>
+<title>Iglesias Unidas de Jujuy - Noticias</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
- 
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
 <link href="css/jcarousel.css" rel="stylesheet" />
 <link href="css/flexslider.css" rel="stylesheet" />
 <link href="css/style.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
  
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-RbYeXZTMpz+SuT8HeHE54BkZ6Q+tW1zX3Jq8c5s8U0djqIevg+M6zP8i8+lYyAX" crossorigin=""/>
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-mntK2nK4dFJ1cJFS5yE2F1xG9G42lhMPPB0I0Kmvh0R2HQAxG8IFsT8gOlHfWkM8" crossorigin=""></script>
+
+<style>
+    /* Estilos para las tarjetas de noticias */
+    .news-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .news-image-container {
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .news-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .news-card:hover .news-image {
+        transform: scale(1.05);
+    }
+    
+    .news-content {
+        padding: 20px;
+    }
+    
+    .news-title {
+        color: #2c3e50;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    
+    .news-excerpt {
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .news-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+    
+    .news-date {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+    
+    .read-more {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .read-more:hover {
+        color: #2980b9;
+    }
+    
+    .read-more i {
+        margin-left: 5px;
+        font-size: 0.8rem;
+    }
+    
+    .news-category {
+        display: inline-block;
+        padding: 3px 10px;
+        background: #f1f1f1;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: #555;
+    }
+    
+    .category-event {
+        background: #e3f2fd;
+        color: #1976d2;
+    }
+    
+    .category-testimony {
+        background: #e8f5e9;
+        color: #388e3c;
+    }
+    
+    .category-announcement {
+        background: #fff8e1;
+        color: #ffa000;
+    }
+</style>
 
 </head>
 <body>
@@ -55,43 +161,90 @@
 	</div>
 	</section>
 	<section id="content">
-        <div class="container content">    
-            <div class="row"> 
+        <div class="container">
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="about-logo">
-                        <h3>Noticias Recientes</h3>
-                        <p>¡Te damos la bienvenida a la sección de noticias recientes, donde mantenemos viva la llama de la fe con las últimas novedades y eventos de nuestras iglesias locales! Nos complace compartir contigo las bendiciones, testimonios y actividades que ocurren en nuestras comunidades cristianas.</p>
-                        <p>Explora las últimas noticias y eventos que fortalecen nuestra conexión espiritual. ¡Gracias por ser parte de nuestra familia!</p>
+                    <div class="section-intro">
+                        <p>Mantente informado sobre las últimas actividades y eventos de nuestras iglesias. Haz clic en "Leer más" para ver la noticia completa.</p>
                     </div>
-                    <a href="#" class="btn btn-color">Más noticias</a>  
                     
-                    <!-- Aquí agregamos el título para identificar el mes -->
-                    <h3 class="news-month">Noticias de Octubre</h3>
-                </div>
-            </div>
-            
-            <!-- Bloques de noticias -->
-            <div class="row service-v1 margin-bottom-40">
-                <div class="col-md-4 md-margin-bottom-40">
-                   <img class="img-responsive" src="img/Img_caimancito_octubre.jpg" alt="">   
-                    <h3>Encuentro Evangelístico en Caimancito Une a Iglesias de la Región Yungas</h3>
-                    <p>El pasado fin de semana, iglesias de la región Yungas realizaron una campaña evangelística en Caimancito, Ledesma. La actividad incluyó reuniones en distintos barrios y contó con la participación de líderes y miembros de iglesias de Perico, San Miguel del Monte, y Palpalá. La organización "Iglesias Unidas de la Provincia de Jujuy" destacó el esfuerzo conjunto para difundir el mensaje cristiano y agradeció el apoyo recibido.</p>        
-                </div>
-                <div class="col-md-4">
-                    <img class="img-responsive" src="img/Img_palpala-Octubre.jpg" alt="">            
-                    <h3>Reuniones Unidas en Palpalá Fortalecen la Unidad de Iglesias de la Región</h3>
-                    <p>Durante el fin de semana del 11 al 13 de octubre, las iglesias de la región Capital y Palpalá celebraron reuniones unidas en Palpalá. El evento incluyó diversas actividades, como la presentación del coro “Alas” el viernes en la Casa de la Cultura, donde se compartió el mensaje del evangelio. El sábado se reunieron para agradecer otro año de trabajo en la obra local, y el domingo, el hermano Abel Moreno de Apolinario Saravia, Salta, compartió un mensaje especial. Las Iglesias Unidas de la Provincia de Jujuy celebraron la comunión vivida y la dedicación a la unidad cristiana. </p>        
-                </div>
-                <div class="col-md-4 md-margin-bottom-40">
-                    <img class="img-responsive" src="img/Img_zenta_octubre.jpg" alt="">  
-                    <h2>Hasta aqui nos ayudo Jehova</h2>
-                    <p>El pasado 5 de octubre, las iglesias unidas de la quebrada de Jujuy realizaron una campaña evangelística en el pueblo de Puerta de Zenta, departamento de Humahuaca. Con una vista a los cerros y el apoyo de comunidades vecinas, los asistentes compartieron el mensaje del evangelio en Palca de Aparzo. Pese al esfuerzo de madrugar para el viaje, el encuentro resultó en decisiones por Cristo y una cálida recepción de las personas de la región.
-
-                        Además, la comisión de iglesias locales anunció que la región sumará una iglesia en Tres Cruces, expandiendo su labor. En 2024, se espera realizar campañas con la participación de las 8 iglesias de la quebrada. Las Iglesias Unidas de la Provincia de Jujuy celebraron la unidad y el compromiso de todos los participantes. </p>        
+                    <!-- Lista de Noticias -->
+                    <div class="row">
+                        <!-- Noticia 1 -->
+                        <div class="col-md-4">
+                            <div class="news-card">
+                                <div class="news-image-container">
+                                    <img src="img/Img_caimancito_octubre.jpg" alt="Encuentro en Caimancito" class="news-image">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category category-event">Evento</span>
+                                    <h3 class="news-title">Encuentro Evangelístico en Caimancito</h3>
+                                    <p class="news-excerpt">Las iglesias de la región Yungas realizaron una campaña evangelística en Caimancito, Ledesma, con participación de múltiples comunidades...</p>
+                                    <div class="news-meta">
+                                        <span class="news-date">15 Octubre 2023</span>
+                                        <a href="noticia-caimancito.html" target="_blank" class="read-more">
+                                            Leer más <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Noticia 2 -->
+                        <div class="col-md-4">
+                            <div class="news-card">
+                                <div class="news-image-container">
+                                    <img src="img/Img_palpala-Octubre.jpg" alt="Reuniones en Palpalá" class="news-image">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category category-testimony">Testimonio</span>
+                                    <h3 class="news-title">Reuniones Unidas en Palpalá</h3>
+                                    <p class="news-excerpt">Las iglesias de la región Capital y Palpalá celebraron reuniones unidas con diversas actividades y mensajes especiales...</p>
+                                    <div class="news-meta">
+                                        <span class="news-date">10 Octubre 2023</span>
+                                        <a href="noticia-palpala.html" target="_blank" class="read-more">
+                                            Leer más <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Noticia 3 -->
+                        <div class="col-md-4">
+                            <div class="news-card">
+                                <div class="news-image-container">
+                                    <img src="img/Img_zenta_octubre.jpg" alt="Campaña en Puerta de Zenta" class="news-image">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category category-announcement">Anuncio</span>
+                                    <h3 class="news-title">Hasta aquí nos ayudó Jehová</h3>
+                                    <p class="news-excerpt">Las iglesias de la quebrada realizaron una campaña evangelística en Puerta de Zenta con resultados bendecidos...</p>
+                                    <div class="news-meta">
+                                        <span class="news-date">5 Octubre 2023</span>
+                                        <a href="noticia-zenta.html" target="_blank" class="read-more">
+                                            Leer más <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paginación -->
+                    <div class="text-center" style="margin-top: 40px;">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>    
+        </section>    
 	<footer>
 	<div class="container">
 		<div class="row">
@@ -144,5 +297,29 @@
 <script src="js/jquery.flexslider.js"></script>
 <script src="js/animate.js"></script>
 <script src="js/custom.js"></script>
+<script>
+    function toggleNews(newsId) {
+        const newsItem = document.getElementById(newsId);
+        const isAlreadyOpen = newsItem.style.display === 'block';
+        
+        // Cerrar todas las noticias primero
+        document.querySelectorAll('.news-full').forEach(function(item) {
+            item.style.display = 'none';
+            item.previousElementSibling.classList.remove('active-news');
+        });
+        
+        // Si la noticia no estaba abierta, mostrarla
+        if (!isAlreadyOpen) {
+            newsItem.style.display = 'block';
+            newsItem.previousElementSibling.classList.add('active-news');
+            newsItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+    
+    function hideNews(newsId) {
+        document.getElementById(newsId).style.display = 'none';
+        document.getElementById(newsId).previousElementSibling.classList.remove('active-news');
+    }
+</script>
 </body>
 </html>
