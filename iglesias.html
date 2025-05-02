@@ -42,6 +42,13 @@
         font-size: 1.4rem;
         margin-bottom: 20px;
     }
+    .bible-quote {
+        font-style: italic;
+        color: #555;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-left: 4px solid #2980b9;
+    }
     
     /* Estilos para las tarjetas de región */
     .region-card {
@@ -52,6 +59,9 @@
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
     .region-card:hover {
         transform: translateY(-5px);
@@ -64,20 +74,27 @@
     }
     .region-card .card-body {
         padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     .region-card h4 {
         color: #2980b9;
         margin-bottom: 15px;
     }
-
-    .region-card.active .btn-color {
-        background: #3498db;
+    .region-card p {
+        flex: 1;
     }
 
     /* Estilos para las iglesias */
     .church-container {
         display: none; /* Oculto por defecto */
         margin-top: 30px;
+        animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     .church-item {
         background: #fff;
@@ -85,6 +102,12 @@
         padding: 20px;
         margin-bottom: 20px;
         box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    .church-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .church-item img {
         width: 100%;
@@ -96,6 +119,7 @@
     .church-item h4 {
         color: #2c3e50;
         margin-bottom: 10px;
+        font-size: 1.3rem;
     }
     .church-item p {
         margin-bottom: 5px;
@@ -105,9 +129,11 @@
         margin-top: 10px;
         color: #2980b9;
         font-weight: 600;
+        transition: all 0.2s ease;
     }
     .church-item .map-link:hover {
         text-decoration: underline;
+        color: #1a5276;
     }
     
     /* Botones */
@@ -118,6 +144,8 @@
         border-radius: 30px;
         border: none;
         transition: all 0.3s ease;
+        align-self: flex-start;
+        margin-top: auto;
     }
     .btn-color:hover {
         background: #3498db;
@@ -128,6 +156,44 @@
     /* Estilo para región activa */
     .region-card.active {
         border: 3px solid #2980b9;
+    }
+    
+    /* Estilos para la búsqueda */
+    .church-search {
+        margin: 30px 0;
+    }
+    #church-search-input {
+        height: 50px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        transition: all 0.3s ease;
+    }
+    #church-search-input:focus {
+        border-color: #2980b9;
+        box-shadow: none;
+    }
+    #church-search-btn {
+        height: 50px;
+        padding: 0 25px;
+    }
+    #search-results-count {
+        margin-top: 10px;
+        font-style: italic;
+        display: none;
+        color: #555;
+    }
+    .no-results {
+        text-align: center;
+        padding: 30px;
+        font-size: 1.2rem;
+        color: #777;
+    }
+    
+    /* Mejoras en el grid de iglesias */
+    .church-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
     }
     
     /* Ajustes para columnas en diferentes pantallas */
@@ -156,6 +222,10 @@
         .col-sm-custom-6 {
             width: 100%;
             float: none;
+        }
+        
+        .church-grid {
+            grid-template-columns: 1fr;
         }
     }
     
@@ -223,6 +293,17 @@
 		<!-- Sección de regiones -->
 		<div class="row">
 			<div class="col-md-12">
+				<div class="church-search">
+					<div class="input-group">
+						<input type="text" id="church-search-input" class="form-control" placeholder="Buscar iglesia por nombre, localidad o región...">
+						<span class="input-group-btn">
+							<button class="btn btn-color" type="button" id="church-search-btn">
+								<i class="fa fa-search"></i> Buscar
+							</button>
+						</span>
+					</div>
+					<div id="search-results-count"></div>
+				</div>
 				<h3 class="text-center" style="margin: 50px 0 30px;">Nuestras Regiones</h3>
 			</div>
 			
@@ -298,48 +379,51 @@
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en La Puna</h3>
 			</div>
-			<!-- Aquí van las iglesias de la Puna -->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Coranzulí">
-				<h4>ICE Coranzulí</h4>
-				<p><strong>Localidad:</strong> Susques</p>
-				<p><strong>Dirección:</strong> Cerro Azul s/n, Coranzuli</p>
-				<a href="https://maps.app.goo.gl/7Dez4fUxKqcLfRtV6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Abra Pampa (23 de Agosto)">
-				<h4>ICE Abra Pampa (23 de Agosto)</h4>
-				<p><strong>Localidad:</strong> Abra Pampa</p>
-				<p><strong>Dirección:</strong> Eva Peron N° 290 esq. Libertador, Barrio 23 de Agosto</p>
-				<a href="https://maps.app.goo.gl/omncfMiMGG5ftiWb7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Catua">
-				<h4>ICE Catua</h4>
-				<p><strong>Localidad:</strong> Catua, Susques</p>
-				<p><strong>Dirección:</strong> San Martin s/n L5 M7</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Abra Pampa">
-				<h4>ICE Abra Pampa</h4>
-				<p><strong>Localidad:</strong> Abra Pampa</p>
-				<p><strong>Dirección:</strong> Norte esq. Independencia, Barrio 12 de octubre</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Tres Pozos">
-				<h4>ICE Tres Pozos</h4>
-				<p><strong>Localidad:</strong> Cochinoca</p>
-				<p><strong>Dirección:</strong> 23 de Agosto s/n, Santuario de Tres Pozos</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Olaroz Chico">
-				<h4>ICE Olaroz Chico</h4>
-				<p><strong>Localidad:</strong> Olaroz Chico, Susques</p>
-				<p><strong>Dirección:</strong> Los Pedregales esq. Vicuñas s/n</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Coranzulí">
+						<h4>ICE Coranzulí</h4>
+						<p><strong>Localidad:</strong> Susques</p>
+						<p><strong>Dirección:</strong> Cerro Azul s/n, Coranzuli</p>
+						<a href="https://maps.app.goo.gl/7Dez4fUxKqcLfRtV6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Abra Pampa (23 de Agosto)">
+						<h4>ICE Abra Pampa (23 de Agosto)</h4>
+						<p><strong>Localidad:</strong> Abra Pampa</p>
+						<p><strong>Dirección:</strong> Eva Peron N° 290 esq. Libertador, Barrio 23 de Agosto</p>
+						<a href="https://maps.app.goo.gl/omncfMiMGG5ftiWb7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Catua">
+						<h4>ICE Catua</h4>
+						<p><strong>Localidad:</strong> Catua, Susques</p>
+						<p><strong>Dirección:</strong> San Martin s/n L5 M7</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Abra Pampa">
+						<h4>ICE Abra Pampa</h4>
+						<p><strong>Localidad:</strong> Abra Pampa</p>
+						<p><strong>Dirección:</strong> Norte esq. Independencia, Barrio 12 de octubre</p>
+						<a href="#" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Tres Pozos">
+						<h4>ICE Tres Pozos</h4>
+						<p><strong>Localidad:</strong> Cochinoca</p>
+						<p><strong>Dirección:</strong> 23 de Agosto s/n, Santuario de Tres Pozos</p>
+						<a href="#" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Olaroz Chico">
+						<h4>ICE Olaroz Chico</h4>
+						<p><strong>Localidad:</strong> Olaroz Chico, Susques</p>
+						<p><strong>Dirección:</strong> Los Pedregales esq. Vicuñas s/n</p>
+						<a href="#" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -347,87 +431,82 @@
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en La Quebrada</h3>
 			</div>
-			<!-- Iglesia en Quebrada -->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/Ice Volcan.jpg" alt="Iglesia Cristiana Evangélica Volcán">
-				<h4>Iglesia Cristiana Evangélica</h4>
-				<p><strong>Localidad:</strong> Volcán</p>
-				<p><strong>Dirección:</strong> Padre José de la Iglesia, Y4616 Volcán, Jujuy</p>
-				<a href="https://maps.app.goo.gl/9yiKTo5RpvyFq5nA6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/Ice Volcan.jpg" alt="Iglesia Cristiana Evangélica Volcán">
+						<h4>ICE Volcan</h4>
+						<p><strong>Localidad:</strong> Volcan</p>
+						<p><strong>Dirección:</strong> Padre José de la Iglesia, Y4616 Volcán, Jujuy</p>
+						<a href="https://maps.app.goo.gl/9yiKTo5RpvyFq5nA6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Humahuaca">
+						<h4>ICE Humahuaca</h4>
+						<p><strong>Localidad:</strong> Humahuaca</p>
+						<p><strong>Dirección:</strong> Abdon Castro Tolay esq. Fermin Quevedo s/n,</p>
+						<a href="https://maps.app.goo.gl/6Fdqd2uKq7U1paPX9" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Tilcara">
+						<h4>ICE Tilcara</h4>
+						<p><strong>Localidad:</strong> Tilcara</p>
+						<p><strong>Dirección:</strong> Juan Ambrosetti esq. Av. Huasamayo</p>
+						<a href="https://maps.app.goo.gl/4X4LvSX7Aqwmzpdy7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Chalala">
+						<h4>ICE Chalala</h4>
+						<p><strong>Localidad:</strong> Purmamarca</p>
+						<p><strong>Dirección:</strong> Barrio Chalala</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Uquía">
+						<h4>ICE Uquia</h4>
+						<p><strong>Localidad:</strong> Uquia, Humahuaca</p>
+						<p><strong>Dirección:</strong> Ruta N° 9</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Huacalera">
+						<h4>ICE Huacalera</h4>
+						<p><strong>Localidad:</strong> Huacalera</p>
+						<p><strong>Dirección:</strong> Ruta N°9, Barrio Norte</p>
+						<a href="https://maps.app.goo.gl/BtQqqRpXoyiY42WX7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Humahuaca">
-				<h4>ICE Humahuaca</h4>
-				<p><strong>Localidad:</strong> Humahuaca</p>
-				<p><strong>Dirección:</strong> Abdon Castro Tolay esq. Fermin Quevedo s/n,</p>
-				<a href="https://maps.app.goo.gl/6Fdqd2uKq7U1paPX9" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Tilcara">
-				<h4>ICE Tilcara</h4>
-				<p><strong>Localidad:</strong> Tilcara</p>
-				<p><strong>Dirección:</strong> Juan Ambrosetti esq. Av. Huasamayo</p>
-				<a href="https://maps.app.goo.gl/4X4LvSX7Aqwmzpdy7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Chalala">
-				<h4>ICE Chalala</h4>
-				<p><strong>Localidad:</strong> Purmamarca</p>
-				<p><strong>Dirección:</strong> Barrio Chalala</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Uquía	">
-				<h4>ICE Uquía</h4>
-				<p><strong>Localidad:</strong> Uquía, Humahuaca</p>
-				<p><strong>Dirección:</strong> Ruta N° 9</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Huacalera">
-				<h4>ICE Huacalera</h4>
-				<p><strong>Localidad:</strong> Huacalera</p>
-				<p><strong>Dirección:</strong> Ruta N°9, Barrio Norte</p>
-				<a href="https://maps.app.goo.gl/BtQqqRpXoyiY42WX7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			
-			<!-- Plantilla para agregar nuevas iglesias en Quebrada -->
-			<!--
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/RUTA_IMAGEN.jpg" alt="NOMBRE_IGLESIA">
-				<h4>NOMBRE_IGLESIA</h4>
-				<p><strong>Localidad:</strong> LOCALIDAD</p>
-				<p><strong>Dirección:</strong> DIRECCION_COMPLETA</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			-->
 		</div>
 		
 		<div class="row church-container" id="valles-churches">
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en Los Valles</h3>
 			</div>
-			<!-- Aquí van las iglesias de los Valles -->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Monterrico">
-				<h4>ICE Monterrico</h4>
-				<p><strong>Localidad:</strong> Monterrico</p>
-				<p><strong>Dirección:</strong> Cordoba N° 21</p>
-				<a href="https://maps.app.goo.gl/rJ9s22yL7KpjoKEK6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Jesus es Vida">
-				<h4>ICE "Jesus es Vida"</h4>
-				<p><strong>Localidad:</strong> Perico</p>
-				<p><strong>Dirección:</strong> Acacias esq. Los Nogales, Barrio Santo Domingo</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Aguas Calientes">
-				<h4>ICE Aguas Calientes</h4>
-				<p><strong>Localidad:</strong> Aguas Calientes, El Carmen</p>
-				<p><strong>Dirección:</strong> Manzana AP2, Barrio Ortega</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Monterrico">
+						<h4>ICE Monterrico</h4>
+						<p><strong>Localidad:</strong> Monterrico</p>
+						<p><strong>Dirección:</strong> Cordoba N° 21</p>
+						<a href="https://maps.app.goo.gl/rJ9s22yL7KpjoKEK6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Jesus es Vida">
+						<h4>ICE "Jesus es Vida"</h4>
+						<p><strong>Localidad:</strong> Perico</p>
+						<p><strong>Dirección:</strong> Acacias esq. Los Nogales, Barrio Santo Domingo</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Aguas Calientes">
+						<h4>ICE Aguas Calientes</h4>
+						<p><strong>Localidad:</strong> Aguas Calientes, El Carmen</p>
+						<p><strong>Dirección:</strong> Manzana AP2, Barrio Ortega</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -435,63 +514,68 @@
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en Ramal</h3>
 			</div>
-			<!-- Aquí van las iglesias de las Ramal -->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Caimancito">
-				<h4>ICE Caimancito</h4>
-				<p><strong>Localidad:</strong> Caimancito, Ledesma</p>
-				<p><strong>Dirección:</strong> Corrientes M8 L13, Barrio Sur</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Caimancito">
+						<h4>ICE Caimancito</h4>
+						<p><strong>Localidad:</strong> Caimancito, Ledesma</p>
+						<p><strong>Dirección:</strong> Corrientes M8 L13, Barrio Sur</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Libertador Gral San Martin">
+						<h4>ICE Libertador Gral San Martin</h4>
+						<p><strong>Localidad:</strong> Libertador Gral. San Martin</p>
+						<p><strong>Dirección:</strong> Jacaranda s/n, Frente Ruta 34, Barrio Eva Peron</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Nueva Vida">
+						<h4>ICE "Nueva Vida"</h4>
+						<p><strong>Localidad:</strong> Palma Sola</p>
+						<p><strong>Dirección:</strong> Barrio Puerto Nuevo</p>
+						<a href="#" class="map-link" target="_blank">(falta) Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Libertador Gral San Martin">
-				<h4>ICE Libertador Gral San Martin</h4>
-				<p><strong>Localidad:</strong>  Libertador Gral. San Martin</p>
-				<p><strong>Dirección:</strong> Jacaranda s/n, Frente Ruta 34, Barrio Eva Peron</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Nueva Vida">
-				<h4>ICE "Nueva Vida"</h4>
-				<p><strong>Localidad:</strong> Palma Sola</p>
-				<p><strong>Dirección:</strong> Barrio Puerto Nuevo</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">(falta)Ver en mapa &rarr;</a>
-			</div>
-
 		</div>
 		
 		<div class="row church-container" id="sanpedro-churches">
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en San Pedro y La Mendieta</h3>
 			</div>
-			<!-- Aquí van las iglesias de San Pedro y La Mendieta -->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE El Sauzal">
-				<h4>ICE El Sauzal</h4>
-				<p><strong>Localidad:</strong> San Pedro, La Mendieta</p>
-				<p><strong>Dirección:</strong> San Jose N° 1</p>
-				<a href="https://maps.app.goo.gl/v1iKz8M1xwBN17PA7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE La Merced">
-				<h4>ICE La Merced</h4>
-				<p><strong>Localidad:</strong> San Pedro</p>
-				<p><strong>Dirección:</strong> Avda Libertador esq. Cacique Viltipoco</p>
-				<a href="https://maps.app.goo.gl/mVwqTnK1UFj2JwPr7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Barrio Albornoz">
-				<h4>ICE Barrio Albornoz</h4>
-				<p><strong>Localidad:</strong> San Pedro</p>
-				<p><strong>Dirección:</strong> Pasaje Pablo Soria N° 31</p>
-				<a href="https://maps.app.goo.gl/6GumnCbdRYkUENZXA" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE La Esperanza">
-				<h4>ICE La Esperanza</h4>
-				<p><strong>Localidad:</strong> La Esperanza, San Pedro</p>
-				<p><strong>Dirección:</strong> Esteban Leach s/n esq. 12 de Octubre</p>
-				<a href="https://maps.app.goo.gl/AiSfv1n11E7qWmU7A" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE El Sauzal">
+						<h4>ICE El Sauzal</h4>
+						<p><strong>Localidad:</strong> San Pedro, La Mendieta</p>
+						<p><strong>Dirección:</strong> San Jose N° 1</p>
+						<a href="https://maps.app.goo.gl/v1iKz8M1xwBN17PA7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE La Merced">
+						<h4>ICE La Merced</h4>
+						<p><strong>Localidad:</strong> San Pedro</p>
+						<p><strong>Dirección:</strong> Avda Libertador esq. Cacique Viltipoco</p>
+						<a href="https://maps.app.goo.gl/mVwqTnK1UFj2JwPr7" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Barrio Albornoz">
+						<h4>ICE Barrio Albornoz</h4>
+						<p><strong>Localidad:</strong> San Pedro</p>
+						<p><strong>Dirección:</strong> Pasaje Pablo Soria N° 31</p>
+						<a href="https://maps.app.goo.gl/6GumnCbdRYkUENZXA" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE La Esperanza">
+						<h4>ICE La Esperanza</h4>
+						<p><strong>Localidad:</strong> La Esperanza, San Pedro</p>
+						<p><strong>Dirección:</strong> Esteban Leach s/n esq. 12 de Octubre</p>
+						<a href="https://maps.app.goo.gl/AiSfv1n11E7qWmU7A" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -499,85 +583,79 @@
 			<div class="col-md-12">
 				<h3 class="text-center" style="margin: 30px 0;">Iglesias en Capital y Palpalá</h3>
 			</div>
-			<!-- Plantilla para agregar iglesias en Capital y Palpalá -->
-			<!--
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/RUTA_IMAGEN.jpg" alt="NOMBRE_IGLESIA">
-				<h4>NOMBRE_IGLESIA</h4>
-				<p><strong>Localidad:</strong> LOCALIDAD</p>
-				<p><strong>Dirección:</strong> DIRECCION_COMPLETA</p>
-				<a href="LINK_GOOGLE_MAPS" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			-->
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Ministerio Misionero, Cuyaya">
-				<h4>ICE "Ministerio Misionero", Cuyaya</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> San Pablo 1615, Barrio Cuyaya</p>
-				<a href="https://maps.app.goo.gl/Bopqfhymy6QVqUjNA" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Alto Comedero B3">
-				<h4>ICE Alto Comedero B3</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> El Arenal 1256 L18, entre calle Yuto, Barrio Alto Comedero</p>
-				<a href="https://maps.app.goo.gl/TBcZ9bEQdGrC7BBq6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Calle Salta">
-				<h4>NOMBRE_IGLESIA</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Salta 950</p>
-				<a href="https://maps.app.goo.gl/HV5gMPKfoAacmgQR9" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Palpalá">
-				<h4>ICE Palpalá</h4>
-				<p><strong>Localidad:</strong> Palpalá</p>
-				<p><strong>Dirección:</strong> Gendarmería Nacional 206, Barrio San Martin</p>
-				<a href="https://maps.app.goo.gl/EFka5xbi6BojVgGn8" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Santa Rita">
-				<h4>ICE Santa Rita</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> B Mejias Este N° 584, Barrio Santa Rita</p>
-				<a href="https://maps.app.goo.gl/EFka5xbi6BojVgGn8" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE El Chingo">
-				<h4>ICE El Chingo</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Av. Maimará M21 L13, Barrio El Chingo</p>
-				<a href="https://maps.app.goo.gl/S5FF8CwkC2UyQ6gt5" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE La Loma, Alto Comedero">
-				<h4>ICE La Loma, Alto Comedero</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Calle 243, Barrio Alto Comedero</p>
-				<a href="https://maps.app.goo.gl/3aGWW6RsQ4i4hM238" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Puesto del Marquez">
-				<h4>ICE Puesto del Marquez</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Puesto del Marquez esq. C Arismendi, Barrio Villa Lidia</p>
-				<a href="https://maps.app.goo.gl/Vv5VWQzJS1s37kE68" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Moreno">
-				<h4>ICE Moreno</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Colombia 847, Barrio Mariano Moreno</p>
-				<a href="https://maps.app.goo.gl/btgzK7HtLMCRpDRA6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
-			</div>
-			<div class="col-md-6 col-lg-4 church-item">
-				<img src="img/sinfotoigle.jpg" alt="ICE Alberdi">
-				<h4>ICE Alberdi</h4>
-				<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
-				<p><strong>Dirección:</strong> Miguel Cane N° 1942, Barrio Alberdi</p>
-				<a href="https://maps.app.goo.gl/w3r2VzaP6sDBsv2N6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+			<div class="col-md-12">
+				<div class="church-grid">
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Ministerio Misionero, Cuyaya">
+						<h4>ICE "Ministerio Misionero", Cuyaya</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> San Pablo 1615, Barrio Cuyaya</p>
+						<a href="https://maps.app.goo.gl/Bopqfhymy6QVqUjNA" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Alto Comedero B3">
+						<h4>ICE Alto Comedero B3</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> El Arenal 1256 L18, entre calle Yuto, Barrio Alto Comedero</p>
+						<a href="https://maps.app.goo.gl/TBcZ9bEQdGrC7BBq6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Calle Salta">
+						<h4>ICE Calle Salta</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Salta 950</p>
+						<a href="https://maps.app.goo.gl/HV5gMPKfoAacmgQR9" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Palpalá">
+						<h4>ICE Palpalá</h4>
+						<p><strong>Localidad:</strong> Palpalá</p>
+						<p><strong>Dirección:</strong> Gendarmería Nacional 206, Barrio San Martin</p>
+						<a href="https://maps.app.goo.gl/EFka5xbi6BojVgGn8" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Santa Rita">
+						<h4>ICE Santa Rita</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> B Mejias Este N° 584, Barrio Santa Rita</p>
+						<a href="https://maps.app.goo.gl/EFka5xbi6BojVgGn8" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE El Chingo">
+						<h4>ICE El Chingo</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Av. Maimará M21 L13, Barrio El Chingo</p>
+						<a href="https://maps.app.goo.gl/S5FF8CwkC2UyQ6gt5" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE La Loma, Alto Comedero">
+						<h4>ICE La Loma, Alto Comedero</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Calle 243, Barrio Alto Comedero</p>
+						<a href="https://maps.app.goo.gl/3aGWW6RsQ4i4hM238" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Puesto del Marquez">
+						<h4>ICE Puesto del Marquez</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Puesto del Marquez esq. C Arismendi, Barrio Villa Lidia</p>
+						<a href="https://maps.app.goo.gl/Vv5VWQzJS1s37kE68" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Moreno">
+						<h4>ICE Moreno</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Colombia 847, Barrio Mariano Moreno</p>
+						<a href="https://maps.app.goo.gl/btgzK7HtLMCRpDRA6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+					<div class="church-item">
+						<img src="img/sinfotoigle.jpg" alt="ICE Alberdi">
+						<h4>ICE Alberdi</h4>
+						<p><strong>Localidad:</strong> San Salvador de Jujuy</p>
+						<p><strong>Dirección:</strong> Miguel Cane N° 1942, Barrio Alberdi</p>
+						<a href="https://maps.app.goo.gl/w3r2VzaP6sDBsv2N6" class="map-link" target="_blank">Ver en mapa &rarr;</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -595,15 +673,7 @@
 					</address>
 				</div>
 			</div>
-			<div class="col-lg-4">
-				<div class="widget">
-					<h5 class="widgetheading">Horarios</h5>
-					<p>
-						<strong>Cultos Dominicales:</strong> 10:00 hs<br>
-						<strong>Estudio Bíblico:</strong> Miércoles 19:00 hs
-					</p>
-				</div>
-			</div>
+			
 			<div class="col-lg-4">
 				<div class="widget">
 					<h5 class="widgetheading">Síguenos</h5>
@@ -647,6 +717,9 @@
 
 <script>
     $(document).ready(function(){
+        // Variables para controlar el estado
+        let currentRegion = null;
+        
         // Ocultar todas las secciones de iglesias al cargar
         $('.church-container').hide();
         
@@ -655,10 +728,12 @@
             var region = $(this).data('region');
             var targetSection = $('#' + region + '-churches');
             
-            // Si la sección ya está visible, la ocultamos
-            if(targetSection.is(':visible')) {
+            // Si estamos haciendo clic en la misma región
+            if(currentRegion === region) {
+                // Ocultar la sección y quitar la clase active
                 targetSection.hide();
-                $('.region-card').removeClass('active');
+                $(this).removeClass('active');
+                currentRegion = null;
                 return;
             }
             
@@ -671,12 +746,101 @@
             $('.church-container').hide();
             
             // Mostrar solo la sección correspondiente
-            targetSection.fadeIn();
+            targetSection.fadeIn(300);
+            
+            // Actualizar la región actual
+            currentRegion = region;
             
             // Desplazarse suavemente a la sección
             $('html, body').animate({
                 scrollTop: targetSection.offset().top - 100
             }, 500);
+        });
+        
+        // Función para buscar iglesias con debounce para mejor rendimiento
+        let searchTimeout;
+        function searchChurches(query) {
+            clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(function() {
+                query = query.toLowerCase().trim();
+                
+                if (!query) {
+                    $('.church-item').show();
+                    $('#search-results-count').hide();
+                    
+                    // Si había una región activa, volver a mostrarla
+                    if(currentRegion) {
+                        $('#' + currentRegion + '-churches').show();
+                    } else {
+                        $('.church-container').hide();
+                    }
+                    return;
+                }
+                
+                // Mostrar todas las secciones de iglesias
+                $('.church-container').show();
+                
+                // Contador de resultados
+                var resultsCount = 0;
+                
+                // Ocultar todas las iglesias primero
+                $('.church-item').hide();
+                
+                // Filtrar iglesias
+                $('.church-item').each(function() {
+                    var churchName = $(this).find('h4').text().toLowerCase();
+                    var churchLocation = $(this).find('p:contains("Localidad:")').text().toLowerCase().replace('localidad:', '').trim();
+                    var churchAddress = $(this).find('p:contains("Dirección:")').text().toLowerCase().replace('dirección:', '').trim();
+                    
+                    if (churchName.includes(query) || 
+                        churchLocation.includes(query) || 
+                        churchAddress.includes(query)) {
+                        $(this).show();
+                        resultsCount++;
+                    }
+                });
+                
+                // Mostrar contador de resultados
+                if (resultsCount > 0) {
+                    $('#search-results-count').html('Se encontraron <strong>' + resultsCount + '</strong> iglesias').show();
+                } else {
+                    $('#search-results-count').html('No se encontraron iglesias que coincidan con "<strong>' + query + '</strong>"').show();
+                }
+                
+                // Desplazarse a la primera iglesia encontrada
+                if (resultsCount > 0) {
+                    $('html, body').animate({
+                        scrollTop: $('.church-item:visible').first().offset().top - 150
+                    }, 500);
+                }
+                
+                // Actualizar el estado de la región actual
+                currentRegion = null;
+                $('.region-card').removeClass('active');
+            }, 300);
+        }
+        
+        // Manejar búsqueda al hacer clic en el botón
+        $('#church-search-btn').click(function() {
+            var query = $('#church-search-input').val();
+            searchChurches(query);
+        });
+        
+        // Manejar búsqueda al presionar Enter
+        $('#church-search-input').keypress(function(e) {
+            if (e.which === 13) {
+                var query = $(this).val();
+                searchChurches(query);
+            }
+        });
+        
+        // Manejar búsqueda en tiempo real con debounce
+        $('#church-search-input').on('input', function() {
+            var query = $(this).val();
+            if(query.length >= 3 || query.length === 0) {
+                searchChurches(query);
+            }
         });
     });
 </script>
