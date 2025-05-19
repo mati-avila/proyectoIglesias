@@ -167,8 +167,12 @@ $noticias = obtenerNoticias(4); // Limitar a 4 noticias
         <div class="row">
             <div class="col-md-12">
                 <div class="section-intro">
-                    <p>¡Te damos la bienvenida a la sección de noticias recientes, donde compartimos los informes de las reuniones unidas y otros eventos que realizan las Iglesias Cristianas Evangelicas - Asambleas de los Hermanos en la Provincia de Jujuy! 
-                        Las noticias se actualizan al finalizar cada mes. Esto nos permite recaudar la mayor información posible para redactar los informes y compartírtelos.</p>
+                    <p>¡Te damos la bienvenida a la sección de noticias recientes, 
+                        donde compartiremos los informes de las reuniones y campañas unidas 
+                        que realizan las Iglesias Cristianas Evangelicas - Asambleas de los Hermanos 
+                        en la Provincia de Jujuy! Las noticias se publicarán cada semana y te animamos 
+                        a que estés atento a los informes y que tambien  puedas apoyar con tus oraciones 
+                        en favor de esta labor que el Señor esta haciendo en Jujuy.</p>
                 </div>
                 
                 <!-- Lista de Noticias -->
